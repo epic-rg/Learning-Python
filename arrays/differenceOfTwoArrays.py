@@ -31,8 +31,6 @@ while k>=0:
     j-=1
     k-=1 
     
-if carry != 0:
-    print(carry, end="")
 
 for item in finalNum:
     print(item, end="")
