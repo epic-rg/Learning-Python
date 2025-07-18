@@ -1,3 +1,4 @@
+list = [2, 5, 9, 3, 1, 12, 6, 8, 7]
 
 from collections import deque
 
@@ -26,22 +27,23 @@ class Stack:
 
     def __repr__(self):
         return f"Stack({list(self._container)})"
-    
+
+
+  
 stack = Stack()
+stack.push(0)
+length = len(list)
+solved = [-1] * length
 
-list = [2, 5, 9, 3, 1, 12, 6, 8, 7]
-stack.push(list[len(list)-1])
-solve = [-1]
+# [5, 9, 12, 12, 12, -1, 8, -1, -1] answer for referance
 
-for i in range(len(list)-2, -1, -1):
-    while stack.size() > 0 and list[i] >= stack.peek():
-        stack.pop()
+for i in range(1, length):
+    # print(list[stack.peek()])
+    while stack.size() > 0 and list[i] >= list[stack.peek()]:
+        print(list[i], list[stack.peek()])
+        x = stack.pop()
+        solved[x] = list[i]
         
-    if stack.size() == 0:
-        solve.insert(0, -1)
-    else:
-        solve.insert(0, stack.peek())
-    
-    stack.push(list[i])
+    stack.push(i)
 
-print(solve)
+print(solved)
